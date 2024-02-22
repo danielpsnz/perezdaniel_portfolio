@@ -12,6 +12,7 @@ import 'animate.css';
 import "./Home.scss";
 
 import Type from "./Type";
+import Contact from "../../components/Contact"
 
 function Home() {
   return (
@@ -95,7 +96,7 @@ function Home() {
 
           </Container>
       
-          
+          <Contact />
 
         </section>
       
