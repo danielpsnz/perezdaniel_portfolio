@@ -1,108 +1,77 @@
-import React, { useState } from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
+import { Nav, Navbar } from "react-bootstrap";
+import logo from "../assets/logo.svg";
+import "../App.scss";
 import { Link } from "react-router-dom";
-import { CgGitFork } from "react-icons/cg";
-import { ImBlog } from "react-icons/im";
-import {
-  AiFillStar,
-  AiOutlineHome,
-  AiOutlineFundProjectionScreen,
-  AiOutlineUser,
-} from "react-icons/ai";
 
-import { CgFileDocument } from "react-icons/cg";
+import { IoLogoInstagram, IoLogoTwitter, IoLogoLinkedin, IoSunnyOutline } from "react-icons/io5";
+import { slugify } from '../utils/helpers'
 
-function NavBar() {
-  const [expand, updateExpanded] = useState(false);
-  const [navColour, updateNavbar] = useState(false);
+const mainNavItems = [
+  { url: '/', label: 'Home', mobileOnly: true},
+  { url: '/me', label: 'About'},
+  { url: '/projects', label: 'Projects'},
+  { url: '/resume', label: 'Resumé'},
+]
 
-  function scrollHandler() {
-    if (window.scrollY >= 20) {
-      updateNavbar(true);
-    } else {
-      updateNavbar(false);
-    }
-  }
+const socialNavItems = [
+  { url: 'https://www.instagram.com/danielpsnz', icon: <IoLogoInstagram />, label: 'Instagram' },
+  { url: 'https://www.twitter.com/danielpsnz', icon: <IoLogoTwitter />, label: 'Twitter' },
+  { url: 'https://www.linkedin.com/in/danielpsnz/', icon: <IoLogoLinkedin />, label: 'Linkedin' },
+]
 
-  window.addEventListener("scroll", scrollHandler);
-
+export const Navigation = ({ onUpdateTheme }) => {
   return (
-    <Navbar
-      expanded={expand}
-      fixed="top"
-      expand="md"
-      className={navColour ? "sticky" : "navbar"}
-    >
-      <Container>
-        <Navbar.Toggle
-          aria-controls="responsive-navbar-nav"
-          onClick={() => {
-            updateExpanded(expand ? false : "expanded");
-          }}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </Navbar.Toggle>
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ms-auto" defaultActiveKey="#home">
-            <Nav.Item>
-              <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
-                <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
-              </Nav.Link>
-            </Nav.Item>
+    <section className="navigation">
+      <div className="container">
+        <div className="nav-wrapper">
 
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/about"
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineUser style={{ marginBottom: "2px" }} /> About
-              </Nav.Link>
-            </Nav.Item>
+        <div className="nav">
+          <Navbar.Brand href="/" className="item brand">
+            <img src={logo} className="logo" alt="bird"/>
+            <span>Daniel Pérez</span>
+          </Navbar.Brand>
+          
+          <nav className="nav-content">
+            {mainNavItems.map((item) => (
+              <Nav.Item className="nav-item-outer" key={item.url}>
+                <Nav.Link
+                  as={Link}
+                  to={item.url}
+                  key={item.label}
+                  className={`item ${slugify(item.label)} ${item.mobileOnly ? 'mobile-only' : ''}`}
+                >
+                  <span>{item.label}</span>
+                </Nav.Link>
+              </Nav.Item>
+            ))}
 
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/project"
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineFundProjectionScreen
-                  style={{ marginBottom: "2px" }}
-                />{" "}
-                Projects
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/resume"
-                onClick={() => updateExpanded(false)}
-              >
-                <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item className="fork-btn">
-              <Button
-                href="https://github.com/danielpsnz/perezdaniel_portfolio"
-                target="_blank"
-                className="fork-btn-inner"
-              >
-                <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
-                <AiFillStar style={{ fontSize: "1.1em" }} />
-              </Button>
-            </Nav.Item>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+            {socialNavItems.map((item) => (
+              <div className="nav-item-outer" key={item.url}>
+                <img src={item.icon} alt={item.label} className="nav-image" />
+                <a
+                  href={item.url}
+                  key={item.label}
+                  className={`desktop-only item ${slugify(item.label)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span>{item.icon}</span>
+                </a>
+              </div>
+            ))}
+          </nav>
+          
+          <div className="theme-toggle">
+            <button onClick={onUpdateTheme}>
+              <IoSunnyOutline className="sun"/>
+            </button>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
-export default NavBar;
+export default Navigation;
