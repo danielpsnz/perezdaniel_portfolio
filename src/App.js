@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+
 import Navbar from "./components/Navbar";
 import Home from "./layouts/Home/Home";
 import Footer from "./components/Footer";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -9,24 +11,30 @@ import {
   Navigate
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+
 import "./App.scss";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./dark-mode.scss";
 
 function App() {
-  const [load, upadateLoad] = useState(true);
-
+  const [theme, setTheme] = useState(
+    localStorage.getItem('theme') || 'light'
+  );
+  const onUpdateTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  };
   useEffect(() => {
-    const timer = setTimeout(() => {
-      upadateLoad(false);
-    }, 1200);
-
-    return () => clearTimeout(timer);
-  }, []);
+    localStorage.setItem('theme', theme);
+    document.body.className = theme;
+  }, [theme]);
 
   return (
     <Router>
-      <div className="App" id={load ? "no-scroll" : "scroll"}>
-        <Navbar />
+      <div className="app">
+        <Navbar onUpdateTheme={onUpdateTheme} theme={theme} />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />

@@ -1,5 +1,5 @@
 import { Nav, Navbar } from "react-bootstrap";
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo.png";
 import "../App.scss";
 import { Link } from "react-router-dom";
 
