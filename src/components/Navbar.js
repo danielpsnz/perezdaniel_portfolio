@@ -10,7 +10,7 @@ const mainNavItems = [
   { url: '/', label: 'Home', mobileOnly: true},
   { url: '/me', label: 'About'},
   { url: '/projects', label: 'Projects'},
-  { url: '/resume', label: 'Resumé'},
+  { url: '/resume', label: 'Resume'},
 ]
 
 const socialNavItems = [
