@@ -5,26 +5,28 @@ import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import "../App.scss";
 
+const FORM_ENDPOINT = "https://public.herotofu.com/v1/3dcc2530-d25b-11ee-a1c1-7755cb567bfd";
+
 const Contact = () => {
-    const [confirmationMessage, setConfirmationMessage] = useState("");
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        message: "",
-    });
+  const [confirmationMessage, setConfirmationMessage] = useState("");
+  const [formData, setFormData] = useState({
+      name: "",
+      email: "",
+      message: "",
+  });
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.id]: e.target.value });
-    };
+  const handleChange = (e) => {
+      setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const handleSubmit = (e) => {
+      e.preventDefault();
 
-        // Use formData in your form submission logic
-        console.log(formData);
+      // Use formData in your form submission logic
+      console.log(formData);
 
-        setConfirmationMessage("¡Thank you! Your message has been sent.");
-    };
+      setConfirmationMessage("¡Thank you! Your message has been sent.");
+  };
 
     return (
         <section className="contact" id="connect">
@@ -48,21 +50,21 @@ const Contact = () => {
                                             {confirmationMessage}
                                         </div>
                                     )}
-                <form id="contact-form" action="contact_send.php" method="post" onSubmit={handleSubmit}>
+                <form id="contact-form" action={FORM_ENDPOINT} onSubmit={handleSubmit} method="post" accept-charset="UTF-8">
                   <Row>
                     <Col size={12} sm={6} className="px-1">
-                        <label htmlFor="name">Name:</label>
+                        <label for="name">Name:</label>
                         <input type="text" id="name" value={formData.name} onChange={handleChange} required />
                     </Col>
                     <Col size={12} sm={6} className="px-1">
-                        <label htmlFor="exampleInputEmail1">Email:</label>
+                        <label for="exampleInputEmail1">Email:</label>
                         <input type="text" id="email" value={formData.email} onChange={handleChange} required />
                     </Col>
                     <Col size={12} className="px-1">
-                        <label htmlFor="message">Message:</label>
-                        <textarea id="message" value={formData.message} onChange={handleChange} required />
+                        <label for="message">Message:</label>
+                        <input name="_gotcha" type="text" id="message" value={formData.message} onChange={handleChange} required />
                     </Col>
-                    <button type="submit" className="btn btn-primary">Send</button>
+                    <button type="submit" value="Download CTA" className="btn btn-primary">Send</button>
                   </Row>
                 </form>
               </div>}
