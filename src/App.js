@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import Navbar from "./components/Navbar";
 import Home from "./layouts/Home/Home";
 import Footer from "./components/Footer";
@@ -14,6 +13,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 import "./App.scss";
 import "./dark-mode.scss";
+import Projects from "./layouts/Projects/Projects";
 
 function App() {
   const [theme, setTheme] = useState(
@@ -38,6 +38,7 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="*" element={<Navigate to="/"/>} />
         </Routes>
         <Footer />

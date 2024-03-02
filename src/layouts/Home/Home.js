@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Row, Col } from "react-bootstrap";
 import TrackVisibility from 'react-on-screen';
 import Tilt from "react-parallax-tilt";
-import Particle from "../../components/Particle"
 
 import headerImg from "../../assets/header-img.svg";
 import myImg from "../../assets/my-img.png";
@@ -16,9 +15,6 @@ import Contact from "../../components/Contact"
 function Home() {
   return (
       <div className='home'>
-
-        <Particle />
-
         <div className='container banner' id='home'>
           <Row className="aligh-items-center">
             <Col md={7} className="home-header">
