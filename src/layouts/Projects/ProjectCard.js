@@ -2,6 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
+import { CgFolder } from "react-icons/cg";
 
 function ProjectCards(props) {
   return (
@@ -14,6 +15,9 @@ function ProjectCards(props) {
         </Card.Text>
         <Button className="card-button" variant="primary" href={props.ghLink} target="_blank">
           <CgWebsite /> &nbsp;
+        </Button>
+        <Button className="card-button" variant="primary" href={props.repoLink} target="_blank">
+          <CgFolder /> &nbsp;
         </Button>
       </Card.Body>
     </Card>

@@ -6,6 +6,9 @@ import compas_system_img from "../../assets/projects/compas_system/compas_system
 import "../../App.scss";
 
 function Projects() {
+
+  const compas_system_repo = "https://github.com/danielpsnz/compas_system.git";
+
   return (
     <Container fluid className="project-section">
       <Container>
@@ -25,6 +28,7 @@ function Projects() {
               by gender and race through graphical representations. The final analysis determines the system's predictive 
               capacity for general crimes versus violent offenses."
               ghLink={compas_system}
+              repoLink={compas_system_repo}
             />
           </Col>
 
