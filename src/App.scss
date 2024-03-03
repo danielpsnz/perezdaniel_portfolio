@@ -773,7 +773,15 @@ a.button:hover {
   color: var(--rainbow-4);
 }
 
+.row-projects {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 50px;
+}
+
 .project-card {
+  width: 500px;
   padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 25px;
@@ -790,12 +798,6 @@ a.button:hover {
   height: 100% !important;
 }
 
-.project-card-view:hover {
-  transform: scale(1.02) !important;
-  overflow: hidden !important;
-  box-shadow: 0 4px 4px 5px var(--rainbow-4) !important;
-}
-
 .project-card-view .card-img {
   height: 200px;
   width: 300px;
@@ -805,6 +807,7 @@ a.button:hover {
 
 .project-card-view .card-title {
   font-size: 1.7rem;
+  margin: 10px;
   color: var(--font-color-heading);
   font-family: var(--font-family-base);
   font-weight: 500;
@@ -818,8 +821,20 @@ a.button:hover {
   font-family: var(--font-family-base);
 }
 
-.project-card-view .card-button {
-  
+.card-button {
+  color: var(--rainbow-4) !important;
+  font-size: 2.5rem;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--rainbow-4);
+  border-radius: 10px;
+}
+
+.card-button:hover {
+  color: var(--rainbow-3) !important;
+  border: 3px solid var(--rainbow-3);
 }
 
 @media screen and (min-width: 700px) {

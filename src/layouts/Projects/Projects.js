@@ -4,6 +4,7 @@ import ProjectCard from "./ProjectCard";
 import compas_system from "../../assets/projects/compas_system/compas_system.pdf"
 import compas_system_img from "../../assets/projects/compas_system/compas_system.jpeg";
 import "../../App.scss";
+import "../../dark-mode.scss";
 
 function Projects() {
 
@@ -15,7 +16,22 @@ function Projects() {
         <h1 className="heading-name">
           Recent <strong className="project-name">Projects</strong> <span className="wave" role="img" aria-labelledby="wave">⚗️</span>
         </h1>
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        <Row className="row-projects">
+
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={compas_system_img}
+              title="Compas System"
+              description="This project involves loading data and conducting an exploratory analysis to assess its quality, 
+              focusing on integrity, validity, and timeliness. Subsequent steps include evaluating the suitability 
+              of specific fields for assessing COMPAS system risk estimates, generating a contingency table based on a 
+              threshold of 7 for preventive measures against recidivism, and examining potential biases in risk assignments 
+              by gender and race through graphical representations. The final analysis determines the system's predictive 
+              capacity for general crimes versus violent offenses."
+              ghLink={compas_system}
+              repoLink={compas_system_repo}
+            />
+          </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard

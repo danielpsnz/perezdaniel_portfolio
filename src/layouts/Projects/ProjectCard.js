@@ -14,10 +14,10 @@ function ProjectCards(props) {
           {props.description}
         </Card.Text>
         <Button className="card-button" variant="primary" href={props.ghLink} target="_blank">
-          <CgWebsite /> &nbsp;
+          <CgWebsite /> 
         </Button>
         <Button className="card-button" variant="primary" href={props.repoLink} target="_blank">
-          <CgFolder /> &nbsp;
+          <CgFolder /> 
         </Button>
       </Card.Body>
     </Card>
