@@ -3,9 +3,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import TrackVisibility from 'react-on-screen';
 import Tilt from "react-parallax-tilt";
 
-import headerImg from "../../assets/header-img.svg";
-import myImg from "../../assets/my-img.png";
-import divider from "../../assets/divider.png";
+import headerImg from "../../assets/images/header-img.svg";
+import myImg from "../../assets/images/my-img.png";
+import divider from "../../assets/images/divider.png";
 import 'animate.css';
 import "./Home.scss";
 

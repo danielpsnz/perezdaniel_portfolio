@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
-import Home from "./layouts/Home/Home";
+import Home from "./containers/Home/Home";
 import Footer from "./components/Footer";
 
 import {
@@ -9,11 +9,12 @@ import {
   Routes,
   Navigate
 } from "react-router-dom";
-import ScrollToTop from "./components/ScrollToTop";
 
 import "./App.scss";
 import "./dark-mode.scss";
-import Projects from "./layouts/Projects/Projects";
+import Projects from "./containers/Projects/Projects";
+
+import About from "./containers/About/About";
 
 function App() {
   const [theme, setTheme] = useState(
@@ -35,9 +36,9 @@ function App() {
     <Router>
       <div className="app">
         <Navbar onUpdateTheme={onUpdateTheme} theme={theme} />
-        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="*" element={<Navigate to="/"/>} />
         </Routes>

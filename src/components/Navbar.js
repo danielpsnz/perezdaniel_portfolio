@@ -1,5 +1,5 @@
 import { Nav, Navbar } from "react-bootstrap";
-import logo from "../assets/logo.png";
+import logo from "../assets/images/logo.png";
 import "../App.scss";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ import { slugify } from '../utils/helpers'
 
 const mainNavItems = [
   { url: '/', label: 'Home', mobileOnly: true},
-  { url: '/me', label: 'About'},
+  { url: '/about', label: 'About'},
   { url: '/projects', label: 'Projects'},
   { url: '/resume', label: 'Resume'},
 ]

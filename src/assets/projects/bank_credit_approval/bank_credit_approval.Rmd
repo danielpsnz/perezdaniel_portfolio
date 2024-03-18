@@ -1,0 +1,318 @@
+---
+title: "Bank Credit Approval"
+output:
+  html_document: default
+  html_notebook: default
+  pdf_document: default
+---
+
+The project involves several key activities. First, the dataset for credit approval is loaded, and a visual inspection is conducted to understand the distribution of credit approval based on each attribute, identifying variables crucial for data separation. Next, the dataset is prepared, and missing values are imputed using the missForest library. The dataset is then divided into training and test sets. Subsequently, Ridge and Lasso regularized logistic regression models are trained on the training set, with the goal of selecting the model with the best AUC, and metrics are calculated on the test set. The project also aims to reveal the factor by which predictor variables influence the odds ratio when increased by one unit. Finally, the profitability of applying the model is assessed based on gaining 100e for every true positive and losing 20e for every false positive.
+
+We will take the dataset for bank credit approval from https://archive.ics.uci.edu/ml/datasets/Credit+Approval.
+
+Number of Instances: 690
+
+Number of Attributes: 15 + class attribute
+
+Attribute Information:
+A1: b, a.
+A2: continuous.
+A3: continuous.
+A4: u, y, l, t.
+A5: g, p, gg.
+A6: c, d, cc, i, j, k, m, r, q, w, x, e, aa, ff.
+A7: v, h, bb, j, n, z, dd, ff, o.
+A8: continuous.
+A9: t, f.
+A10: t, f.
+A11: continuous.
+A12: t, f.
+A13: g, p, s.
+A14: continuous.
+A15: continuous.
+A16: +,- (class attribute)
+
+Missing Attribute Values:
+In 37 cases (5%), one or more values are missing. The missing
+values for specific attributes are:
+A1: 12
+A2: 12
+A4: 6
+A5: 6
+A6: 9
+A7: 9
+A14: 13
+
+Class Distribution:
++: 307 (44.5%)
+-: 383 (55.5%)
+
+```{r}
+data <- read.csv("crx.data", header=FALSE, na.strings = "?" )
+str(data)
+```
+
+```{r}
+dim(data)
+```
+
+```{r}
+head(data)
+```
+
+```{r}
+summary(data)
+```
+
+We format the variables properly. We observe that V15 undergoes a significant imbalance due to a few extremely high values. We detect outliers using the interquartile range. Additionally, we convert all categorical variables into factors.
+
+```{r}
+data$V1 <- as.factor(data$V1)
+
+data$V4 <- as.factor(data$V4)
+
+data$V5 <- as.factor(data$V5)
+
+data$V6 <- as.factor(data$V6)
+
+data$V7 <- as.factor(data$V7)
+
+data$V9 <- as.factor(data$V9)
+
+data$V10 <- as.factor(data$V10)
+
+data$V12 <- as.factor(data$V12)
+
+data$V13 <- as.factor(data$V13)
+
+data$V15 <- replace(data$V15, data$V15 >= 395 + 1.5*(395.5-0), 395 + 1.5*(395.5-0))
+
+data$V16 <- replace(data$V16, data$V16 == "+", 1)
+data$V16 <- replace(data$V16, data$V16 == "-", 0)
+data$V16 <- as.factor(data$V16)
+
+summary(data)
+```
+We begin by plotting histograms for the continuous variables, separated by colors according to the target variable.
+
+```{r}
+library(ggplot2)
+library(plyr)
+library(gridExtra)
+
+plotv2 <- ggplot(data=data, aes(x=V2, fill=V16)) +
+    geom_histogram(position="dodge", color = "black", binwidth = 10) + 
+    labs(title = "V2 vs V16")
+
+plotv3 <- ggplot(data=data, aes(x=V3, fill=V16)) +
+    geom_histogram(position="dodge", color = "black", binwidth = 10) + 
+    labs(title = "V3 vs V16")
+
+plotv8 <- ggplot(data=data, aes(x=V8, fill=V16)) +
+    geom_histogram(position="dodge", color = "black", binwidth = 10) + 
+    labs(title = "V8 vs V16")
+
+plotv11 <- ggplot(data=data, aes(x=V11, fill=V16)) +
+    geom_histogram(position="dodge", color = "black", binwidth = 20) + 
+    labs(title = "V11 vs V16")
+
+plotv14 <- ggplot(data=data, aes(x=V14, fill=V16)) +
+    geom_histogram(position="dodge", color = "black", binwidth = 300) + 
+    labs(title = "V14 vs V16")
+
+plotv15 <- ggplot(data=data, aes(x=V15, fill=V16)) +
+    geom_histogram(position="dodge", color = "black", bins = 3) + 
+    labs(title = "V15 vs V16")
+
+grid.arrange(plotv2, plotv3, plotv8, plotv11, plotv14, plotv15,  ncol = 3)
+```
+
+Now with discrete variables:
+
+```{r}
+plotv1 <- ggplot(data, aes(V1, fill=V16)) + 
+          geom_bar(color = "black") + 
+          labs(title = "V1 vs V16")
+
+plotv4 <- ggplot(data, aes(V4, fill=V16)) + 
+          geom_bar(color = "black") + 
+          labs(title = "V4 vs V16")
+
+plotv5 <- ggplot(data, aes(V5, fill=V16)) + 
+          geom_bar(color = "black") + 
+          labs(title = "V5 vs V16")
+
+plotv6 <- ggplot(data, aes(V6, fill=V16)) + 
+          geom_bar(color = "black") + 
+          labs(title = "V6 vs V16")
+
+plotv7 <- ggplot(data, aes(V7, fill=V16)) + 
+          geom_bar(color = "black") + 
+          labs(title = "V7 vs V16")
+
+
+plotv9 <- ggplot(data, aes(V9, fill=V16)) + 
+          geom_bar(color = "black") + 
+          labs(title = "V9 vs V16")
+
+
+plotv10 <- ggplot(data, aes(V10, fill=V16)) + 
+          geom_bar(color = "black") + 
+          labs(title = "V10 vs V16")
+
+
+plotv12 <- ggplot(data, aes(V12, fill=V16)) + 
+          geom_bar(color = "black") + 
+          labs(title = "V12 vs V16")
+
+
+plotv13 <- ggplot(data, aes(V13, fill=V16)) + 
+          geom_bar(color = "black") + 
+          labs(title = "V13 vs V16")
+
+
+grid.arrange(plotv1, plotv4, plotv5, plotv6, plotv7, plotv9, plotv10, plotv12, plotv13, ncol = 3)
+```
+
+After visualizing these graphs, we draw the following initial conclusions:
+* The high values of variable V11 mostly belong to class 1.
+* In the low values of variable V15, there is a higher concentration of records from class 1, while in the high values, there is a greater number of class 0.
+* For the 'f' value of variable V9, the majority belongs to class 0, while for the 't' value, the majority belongs to class 1.
+
+Next, we count missing values.
+
+```{r}
+sapply(data, function(x) sum(is.na(x)))
+```
+
+The dataset should be preprocessed to ensure it is in a suitable format for analysis, and any missing values present in the data should be filled in using the missForest library. We use missForest library to provide functions for imputing missing values in datasets, enabling us to address incomplete data before proceeding with further analysis or modeling tasks.
+
+```{r}
+library(missForest)
+
+data.imp <- missForest(data)
+data <- data.imp$ximp
+sapply(data, function(x) sum(is.na(x)))
+```
+
+Now, we perform a One Hot Encoding (OHE) on the categorical variables. 
+
+```{r}
+dataOHE <- model.matrix(V16~.-1, data)
+head(dataOHE)
+```
+
+We are going to divide the dataset: 590 elements as train and 100 as test.
+
+```{r}
+train <- dataOHE[1:590,]
+test <- dataOHE[591:nrow(dataOHE), ]
+
+dim(train)
+```
+
+```{r}
+dim(test)
+```
+
+```{r}
+table(data[1:590,]$V16)
+```
+
+```{r}
+table(data[591:nrow(data), ]$V16)
+```
+
+Now, a logistic regression model with Ridge and Lasso regularization is trained on the training data, selecting the one with the best Area Under the Curve (AUC). This involves creating a separation between the features (X_train) and the target variable (y_train) for training purposes, and also creating a separate set for testing, with features (X_test) and corresponding target variable (y_test). The performance of both Ridge and Lasso models is then evaluated using AUC, and the model with the highest AUC on the training data is chosen. Finally, the selected model's metrics, such as accuracy, precision, recall, and F1-score, are calculated on the test data to assess its performance on unseen data.
+
+```{r}
+X_train <- data.matrix(train)
+y_train <- data.matrix(data[1:590,]$V16)
+
+X_test <- data.matrix(test)
+y_test <- data.matrix(data[591:nrow(data), ]$V16)
+```
+
+First, we apply Ridge regularization:
+
+```{r}
+library(glmnet)
+set.seed(42)
+cv.ridge <- cv.glmnet(X_train, y_train, family='binomial', alpha=0, type.measure='auc')
+plot(cv.ridge)
+```
+```{r}
+cv.ridge$lambda.min
+```
+
+```{r}
+max(cv.ridge$cvm)
+```
+
+We can observe that the model regularized by Ridge with $\lambda$ has an AUC of 0.925. We´ll see now the Lasso regularization:
+
+```{r}
+set.seed(42)
+cv.lasso <- cv.glmnet(X_train, y_train, family='binomial', alpha=1, type.measure='auc')
+plot(cv.lasso)
+```
+
+
+```{r}
+cv.lasso$lambda.min
+```
+
+
+```{r}
+max(cv.lasso$cvm)
+```
+
+We observe that the regularized Lasso model with optimal λ has an AUC of 0.931. Since the AUC of the Lasso model is greater than that of Ridge, we choose the model obtained through Lasso regularization. Let's examine the coefficients of the optimal model obtained through Lasso regularization.
+
+```{r}
+coef(cv.lasso, s=cv.lasso$lambda.min)
+```
+
+We calculate the prediction on the test data and its metrics. We display the first six predictions along with their corresponding actual values.
+
+```{r}
+y_pred <- as.numeric(predict.glmnet(cv.ridge$glmnet.fit, newx=X_test, s=cv.lasso$lambda.min)>.5)
+y_pred <- as.factor(y_pred)
+y_test <- as.factor(y_test)
+```
+
+```{r}
+head(y_pred)
+```
+
+
+```{r}
+head(y_test)
+```
+
+We provide metrics on the test.
+
+```{r}
+library(caret)
+library(ggplot2)
+library(lattice)
+library(e1071)
+confusionMatrix(y_test, y_pred, mode="everything")
+```
+
+We observe that the model exhibits a high accuracy of 91% and a precision of 98.84%
+
+Let's remember that the impact a coefficient βᵢ has on the odds ratio is that, for each unit increase in the corresponding predictor variable, the odds ratio will be multiplied by $e^{βᵢ}$.
+
+```{r}
+exp(coef(cv.lasso, s=cv.lasso$lambda.min))
+```
+
+We observe that variable V6ff is the most detrimental to credit approval, while variable V9t is the most favorable to such approval.
+
+If we gain 100€ for each true positive and lose 20€ for each false positive. What profitability does applying this model bring?
+
+There are 100 elements in the test data, of which 7 are true positives. Our model generates 6 true positives and 8 false positives.
+Therefore, the estimated profit obtained by the model for every 100 assessments is:
+
+$$100 \cdot 6 - 20 \cdot 8 = 440 €$$
