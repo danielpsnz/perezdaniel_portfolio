@@ -5,6 +5,8 @@ import { Fade, Flip } from "react-reveal";
 import image from "../../assets/images/programmer.svg"
 import uniofyork from "../../assets/images/university-of-york-logo.png";
 import imf from "../../assets/images/IMF_Smart_Education-logo.png"
+import fmva from "../../assets/images/FMVA-logo.png";
+import frontend from "../../assets/images/front-end.png"
 
 import 'animate.css';
 import "./About.scss";
@@ -30,13 +32,13 @@ function About() {
         </Container>
       </section>
       </Fade>
+
       <Fade bottom duration={3000} distance="20px">
       <section id='skills'>
-      <Container>
-          <h1 className="heading-name">Main skills</h1>
-        </Container>
+
       </section>
       </Fade>
+
       <Fade bottom duration={4000} distance="20px">
       <section id='education'>
         <Container>
@@ -138,7 +140,63 @@ function About() {
       </section>
       </Fade>
       <section id='certificates'>
+        <Container>
+          <h1 className="heading-name">Certificates</h1>
+        </Container>
         
+        <div className="certs-body-div">
+            <div className="cert-card">
+            <div className="content">
+              <a
+                href="https://drive.google.com/file/d/1aqGIyaqcQON0dnWxm40xoHk6mKf3OqGi/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="content-overlay"></div>
+                <div className="cert-header">
+                  <img
+                    className="logo_img"
+                    src={fmva}
+                    alt="FMVA logo"
+                  />
+                </div>
+                <div className="content-details fadeIn-top">
+                  <h3 className="content-title">Certificate</h3>
+                </div>
+              </a>
+            </div>
+
+            <div className="cert-body">
+              <h2 className="cert-body-title">FMVA</h2>
+            </div>
+            </div>
+ 
+            <div className="cert-card">
+            <div className="content">
+              <a
+                href="https://drive.google.com/file/d/1Nwd01ZINNK6TU17NMk6PQFBbeFFU9Shz/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="content-overlay"></div>
+                <div className="cert-header">
+                  <img
+                    className="logo_img"
+                    src={frontend}
+                    alt="frontend bootcamp logo"
+                  />
+                </div>
+                <div className="content-details fadeIn-top">
+                  <h3 className="content-title">Certificate</h3>
+                </div>
+              </a>
+            </div>
+
+            <div className="cert-body">
+              <h2 className="cert-body-title">Front-end Development Bootcamp</h2>
+            </div>
+            </div>
+          </div>
       </section>
 
       <section id='experience'>

@@ -138,23 +138,6 @@ const skills = {
   ],
 };
 
-// Education Page
-const degrees = {
-  degrees: [
-    {
-      title: "",
-      subtitle: "",
-      logo_path: "IMF_Smart_Education-logo.png",
-      alt_name: "IMF Business School",
-      duration: "",
-      descriptions: [
-        ""
-      ],
-      website_link: "",
-    },
-  ],
-};
-
 const certifications = {
   certifications: [
     {
