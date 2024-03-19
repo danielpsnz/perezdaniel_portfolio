@@ -1,101 +1,5 @@
-const seo = {
-  title: "Daniel's Portfolio",
-  description:
-    "Graduated in Mathematics and Economics from the University of York. I have worked at the Ministry of Justice as a statistician for one year. I have completed the FMVA (Financial Modelling and Valuation Analyst) certification, allowing me to enhance my skills in PowerBI and Excel. I possess advanced knowledge in front-end development, as well as proficiency in R, SAS, Python, and Java. I am fluent in Spanish, English, and French.",
-  og: {
-    title: "Daniel Pérez",
-    type: "website",
-    url: "",
-  },
-};
-
-// About Page
-const about = {
-  title: "Daniel Pérez Sanz",
-  logo_name: "DanielPerez",
-  subTitle:
-    "Graduated in Mathematics and Economics from the University of York. I have worked at the Ministry of Justice as a statistician for one year. I have completed the FMVA (Financial Modelling and Valuation Analyst) certification, allowing me to enhance my skills in PowerBI and Excel. I possess advanced knowledge in front-end development, as well as proficiency in R, SAS, Python, and Java. I am fluent in Spanish, English, and French.",
-  resumeLink:
-    "https://drive.google.com/file/d/1IhPjbNo6whiLu582KmrCynSHF9KNKfPr/view?usp=sharing",
-  portfolio_repository: "https://github.com/danielpsnz/perezdaniel_portfolio",
-  githubProfile: "https://github.com/danielpsnz",
-};
-
-const socialMediaLinks = [
-  {
-    name: "Github",
-    link: "https://github.com/danielpsnz",
-    backgroundColor: "#181717", // Reference https://simpleicons.org/?q=github
-  },
-  {
-    name: "LinkedIn",
-    link: "https://www.linkedin.com/in/danielpsnz/",
-    backgroundColor: "#0077B5", // Reference https://simpleicons.org/?q=linkedin
-  },
-  {
-    name: "Gmail",
-    link: "mailto:danielperezsanz21@gmail.com",
-    backgroundColor: "#D14836", // Reference https://simpleicons.org/?q=gmail
-  },
-  {
-    name: "Twitter",
-    link: "https://twitter.com/danielpsnz",
-    backgroundColor: "#000000", // Reference https://simpleicons.org/?q=x
-  },
-  {
-    name: "Instagram",
-    link: "https://www.instagram.com/danielpsnz/",
-    backgroundColor: "#E4405F", // Reference https://simpleicons.org/?q=instagram
-  },
-];
-
 const skills = {
   data: [
-    {
-      title: "Data Science & AI",
-      fileName: "DataScienceImg",
-      skills: [
-        "Implementing end-to-end scalable solutions for diverse deep learning and statistical applications, ensuring seamless integration into production environments.",
-        "Demonstrated proficiency in tackling Computer Vision and Natural Language Processing (NLP) challenges, delivering impactful solutions through innovative approaches and advanced algorithms.",
-        "Expertise in conducting sophisticated quantitative modeling to enable dynamic forecasting and intricate time series analysis, empowering organizations with actionable insights for strategic decision-making.",
-      ],
-      softwareSkills: [
-        {
-          skillName: "Tensorflow",
-          fontAwesomeClassname: "logos-tensorflow",
-          style: {
-            backgroundColor: "transparent",
-          },
-        },
-        {
-          skillName: "Keras",
-          fontAwesomeClassname: "simple-icons:keras",
-          style: {
-            backgroundColor: "white",
-            color: "#D00000",
-          },
-        },
-        {
-          skillName: "PyTorch",
-          fontAwesomeClassname: "logos-pytorch",
-          style: {
-            backgroundColor: "transparent",
-          },
-        },
-        {
-          skillName: "Python",
-          fontAwesomeClassname: "ion-logo-python",
-          style: {
-            backgroundColor: "transparent",
-            color: "#3776AB",
-          },
-        },
-        {
-          skillName: "Deeplearning",
-          imageSrc: "deeplearning_ai_logo.png",
-        },
-      ],
-    },
     {
       title: "Front-end Development",
       fileName: "FullStackImg",
@@ -238,26 +142,15 @@ const skills = {
 const degrees = {
   degrees: [
     {
-      title: "University of York",
-      subtitle: "Bachelor of Science in Mathematics and Economics",
-      logo_path: "university-of-york-logo.png",
-      alt_name: "University of York",
-      duration: "2019 - 2023",
-      descriptions: [
-        "Strong analytical skills to address and solve complex problems, advanced knowledge in economic theories and mathematical tools, as well as effective communication, teamwork, and leadership skills. Experience with Java and C++."
-      ],
-      website_link: "http://www.york.ac.uk",
-    },
-    {
-      title: "IMF Business School",
-      subtitle: "Master in Data Science and Business Analytics",
+      title: "",
+      subtitle: "",
       logo_path: "IMF_Smart_Education-logo.png",
       alt_name: "IMF Business School",
-      duration: "2023 - 2024",
+      duration: "",
       descriptions: [
-        "Proficiency in advanced data analysis, with outstanding skills in statistics, machine learning, data visualization and programming (Python, R)"
+        ""
       ],
-      website_link: "https://www.imf-formacion.com/",
+      website_link: "",
     },
   ],
 };
@@ -324,9 +217,6 @@ const experience = {
 };
 
 export {
-  seo,
-  about,
-  socialMediaLinks,
   skills,
   degrees,
   certifications,

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Row, Col } from "react-bootstrap";
-import TrackVisibility from 'react-on-screen';
 import Tilt from "react-parallax-tilt";
 
 import headerImg from "../../assets/images/header-img.svg";
@@ -10,7 +9,7 @@ import 'animate.css';
 import "./Home.scss";
 
 import Type from "./Type";
-import Contact from "../../components/Contact"
+import Contact from "../../components/Contact/Contact"
 
 function Home() {
   return (
@@ -38,12 +37,9 @@ function Home() {
             </Col>
 
             <Col xs={12} md={6} xl={5} className='gif'>
-              <TrackVisibility>
-              {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
+              <div>
                 <img className='header-img' src={headerImg} alt="Header Img"/>
-              </div>}
-              </TrackVisibility>
+              </div>
             </Col>
 
           </Row>

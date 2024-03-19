@@ -10,7 +10,7 @@ const mainNavItems = [
   { url: '/', label: 'Home', mobileOnly: true},
   { url: '/about', label: 'About'},
   { url: '/projects', label: 'Projects'},
-  { url: '/resume', label: 'Resume'},
+  { url: "https://drive.google.com/file/d/1IhPjbNo6whiLu582KmrCynSHF9KNKfPr/view?usp=sharing", label: 'Resume'},
 ]
 
 const socialNavItems = [

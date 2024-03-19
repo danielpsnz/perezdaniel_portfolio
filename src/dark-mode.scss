@@ -189,4 +189,20 @@
   .project-card-view .card-title {
     color: var(--dark-font-color-heading);
   }
+
+  .degree-card .card-img {
+    border: 1px solid var(--dark-border-color);
+    box-shadow: 5px 5px 5px var(--dark-code-border-color);
+  }
+
+  .card-subtitle {
+    color: var(--rainbow-3);
+  }
+
+  .card-body {
+    border-bottom: 1px solid var(--dark-border-color);
+    border-left: 1px solid var(--dark-border-color);
+    border-right: 1px solid var(--dark-border-color);
+    box-shadow: 5px 5px 5px var(--dark-border-color);
+  }
 }

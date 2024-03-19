@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import contactImg from "../assets/images/contact-img.svg";
+import contactImg from "../../assets/images/contact-img.svg";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import "../App.scss";
+import "./Contact.scss";
 
 const FORM_ENDPOINT = "https://public.herotofu.com/v1/3dcc2530-d25b-11ee-a1c1-7755cb567bfd";
 

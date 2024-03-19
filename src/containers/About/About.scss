@@ -1,0 +1,252 @@
+:root {
+  --gray-0: #f9f9f9;
+  --gray-05: #f6f6f6;
+  --gray-1: #eee;
+  --gray-2: #e6e6e6;
+  --gray-3: #ddd;
+  --gray-4: #bbb;
+  --gray-5: #999;
+  --gray-6: #666;
+  --gray-65: #555;
+  --gray-7: #2c2c2c;
+  --gray-8: #252525;
+  --gray-9: #1f1f1f;
+  --gray-10: #181818;
+
+  --blue: #07a7e6;
+  --blue-1: #70bdee;
+  --blue-2: #618be1;
+  --blue-3: #5b5ed5;
+  --blue-4: #623ac6;
+  --blue-5: #58119f;
+
+  --rainbow-1: #ff67f7;
+  --rainbow-2: #9b78fa;
+  --rainbow-3: #59abf7;
+  --rainbow-4: #5eddac;
+  --rainbow-5: #f6cd5d;
+
+    /* Font family */
+    --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-family-monospace: Menlo, 'IBM Plex Mono', Menlo, monospace;
+  --font-family-heading: -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    Arial, sans-serif;
+  --font-family-nav: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial,
+    sans-serif;
+}
+
+.about-section {
+  padding-top: 150px;
+  padding-bottom: 30px;
+}
+
+.wave {
+  animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.1s; /* Change to speed up or slow down */
+  animation-iteration-count: infinite; /* Never stop waving :) */
+  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  } /* Reset for the last half to pause */
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.about-description {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+ .about-description {
+    display: block;
+  }
+}
+
+.about-img {
+  height: 250px;
+  width: 300px;
+  margin-top: 80px;
+}
+
+.about-description-text {
+  font-size: 1.2em !important;
+  text-align: left;
+  margin: 50px;
+  margin-top: 120px;
+}
+
+@media (max-width: 767px) {
+  .about-section-description {
+    width: 100%;
+    text-align: center;
+    margin: 0px 40px;
+  }
+}
+
+/* Education */
+
+.degree-card {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 23px;
+}
+
+.card-subtitle {
+  font-size: 20px;
+  margin-top: 7px;
+  margin-bottom: 5px;
+  color: var(--rainbow-3);
+  font-family: var(--font-family-base);
+  font-weight: 700;
+}
+
+.card-img {
+  width: 200px;
+  height: auto;
+  border-radius: 50%;
+  padding: 10px;
+  border: 1px solid var(--gray-3);
+  box-shadow: 5px 5px 5px var(--gray-3);
+}
+
+.body-header {
+  max-width: inherit;
+  display: flex;
+  border-radius: 7px 7px 0px 0px;
+  padding: 10px;
+}
+
+.body-header-title {
+  align-items: flex-start;
+  width: 80%;
+}
+
+.body-header-duration {
+  width: 20%;
+}
+.duration {
+  font-size: 16px;
+  padding-right: 10px;
+  float: right;
+}
+
+.body-content {
+  max-width: inherit;
+  border-radius: 0px 0px 7px 7px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-list {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.card-body {
+  border-bottom: 1px solid var(--gray-3);
+  border-left: 1px solid var(--gray-3);
+  border-right: 1px solid var(--gray-3);
+  border-radius: 7px;
+  margin: 10px;
+  box-shadow: 5px 5px 5px var(--gray-3);
+}
+
+.visit-btn {
+  display: inline-block;
+  margin: 0px 10px 10px 0px;
+  padding: 10px;
+  border-radius: 7px;
+  border: 0px;
+}
+
+.visit-btn:hover {
+  transform: scale(110%);
+}
+
+.btn {
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid ;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.btn:hover {
+  color: var(--rainbow-3);
+  border-color: var(--rainbow-3);
+}
+
+@media (max-width: 1380px) {
+}
+
+@media (max-width: 768px) {
+  .degree-card {
+    flex-direction: column;
+  }
+
+  .body-header {
+    flex-direction: column;
+  }
+
+  .body-header-title {
+    width: 100%;
+  }
+
+  .body-header-duration {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .duration {
+    padding: 0px;
+    margin: 0px;
+    float: left;
+  }
+
+  .card-img {
+    width: 200px;
+  }
+
+  .card-body {
+    width: 100% !important;
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+
+  .card-subtitle {
+    font-size: 16px;
+  }
+}
