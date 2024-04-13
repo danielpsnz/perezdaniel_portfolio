@@ -1,26 +1,14 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import { CgWebsite } from "react-icons/cg";
-import { CgFolder } from "react-icons/cg";
 
-function ProjectCards(props) {
+function ProjectCard(props) {
   return (
-    <Card className="project-card-view">
-      <Card.Img className="card-img" variant="top" src={props.imgPath} alt="card-img" />
-      <Card.Body>
-        <Card.Title className="card-title">{props.title}</Card.Title>
-        <Card.Text className="card-text" style={{ textAlign: "justify" }}>
-          {props.description}
-        </Card.Text>
-        <Button className="card-button" variant="primary" href={props.ghLink} target="_blank">
-          <CgWebsite /> 
-        </Button>
-        <Button className="card-button" variant="primary" href={props.repoLink} target="_blank">
-          <CgFolder /> 
-        </Button>
-      </Card.Body>
-    </Card>
+    <button href={props.repoLink} className="project-card-view" target="_blank">
+      <div className="content-card">
+        <div className="card-title">{props.title}</div>
+        <div className="card-text">{props.description}</div>
+        <div className="languages">{props.languages}</div>
+      </div>
+    </button>
   );
 }
-export default ProjectCards;
+export default ProjectCard;
