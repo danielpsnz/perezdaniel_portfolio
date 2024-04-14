@@ -137,6 +137,16 @@
   .Typewriter__cursor {
     display: none !important;
   }
+
+  .header-img {
+    margin: auto;
+  }
+}
+
+.row-about-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .myAvtar {
@@ -164,14 +174,6 @@
   margin-left: 40px;
 }
 
-@media (max-width: 767px) {
-  .home-about-description {
-    width: 100%;
-    text-align: center;
-    margin: 0px 40px;
-  }
-}
-
 .home-about-body {
   font-size: 1.2em !important;
   text-align: left;
@@ -179,4 +181,12 @@
 
 .divider {
   width: 100%;
+}
+
+@media (max-width: 767px) {
+  .home-about-description {
+    width: auto;
+    text-align: center;
+    margin: 0px 40px;
+  }
 }

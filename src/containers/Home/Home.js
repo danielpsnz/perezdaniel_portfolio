@@ -47,7 +47,7 @@ function Home() {
 
         <section className="banner" id="home">
           <Container fluid className="home-about-section">
-          <Row className='row'>
+          <Row className='row-about-section'>
 
           <Col md={4} className="myAvtar">
             <Tilt>
