@@ -18,6 +18,7 @@ function Projects() {
 
   const compas_system_repo = "https://github.com/danielpsnz/compas_system";
   const credit_approval_repo = "https://github.com/danielpsnz/credit_approval"
+  const salaries_prediction = "https://github.com/danielpsnz/salaries_prediction"
 
   return (
     <Container fluid className="project-section">
@@ -25,6 +26,15 @@ function Projects() {
         <h1 className="heading-name">
           Recent <strong className="project-name">Projects</strong> <span className="wave" role="img" aria-labelledby="wave">⚗️</span>
         </h1>
+
+        <Col md={4} className="project-card">
+            <ProjectCard
+              title="Salaries Prediction"
+              description="The objective of this project is to analyze the Salaries.csv dataset, which contains salary information for 397 university professors in the USA over nine months during 2008 and 2009. The dataset includes variables such as professor rank, discipline, years since obtaining a PhD, years of service, gender, and salary. The primary goal is to implement a regularized linear model to predict professor salaries based on these variables. Through thorough data exploration and statistical analysis, insights will be gained into the factors influencing salary variations among university professors."
+              repoLink={salaries_prediction}
+              languages={<SiRstudio />}
+            />
+          </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
