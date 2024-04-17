@@ -290,8 +290,6 @@
   margin: auto;
 }
 
-
-
 .cert-header {
   margin: 0px;
   border-radius: 5px 5px 0px 0px;
@@ -311,6 +309,12 @@
   font-family: var(--font-family-heading);
   font-size: 20px;
   margin: 10px;
+}
+
+@media (max-width: 768px) {
+  .cert-card {
+    margin-top: 25px;
+  }
 }
 
 .content {
