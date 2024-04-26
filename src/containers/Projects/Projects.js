@@ -19,6 +19,7 @@ function Projects() {
   const compas_system_repo = "https://github.com/danielpsnz/compas_system";
   const credit_approval_repo = "https://github.com/danielpsnz/credit_approval"
   const salaries_prediction = "https://github.com/danielpsnz/salaries_prediction"
+  const coches_segunda_mano = "https://github.com/danielpsnz/coches_segunda_mano"
 
   return (
     <Container fluid className="project-section">
@@ -26,6 +27,15 @@ function Projects() {
         <h1 className="heading-name">
           Recent <strong className="project-name">Projects</strong> <span className="wave" role="img" aria-labelledby="wave">⚗️</span>
         </h1>
+
+        <Col md={4} className="project-card">
+            <ProjectCard
+              title="Vehicles Price Prediction"
+              description="The primary objective of this project is to develop machine learning models capable of accurately predicting the prices of second-hand vehicles. These models will enable VALTEL to offer its customers real-time pricing information within its mobile app, enhancing the user experience and driving customer engagement. Additionally, the project aims to showcase my skills in data science, machine learning, and project management, serving as a valuable addition to my portfolio."
+              repoLink={coches_segunda_mano}
+              languages={<FaPython />}
+            />
+        </Col>
 
         <Col md={4} className="project-card">
             <ProjectCard
