@@ -30,9 +30,9 @@ function Projects() {
         <Col md={4} className="project-card">
             <ProjectCard
               title="Salaries Prediction"
-              description="The objective of this project is to analyze the Salaries.csv dataset, which contains salary information for 397 university professors in the USA over nine months during 2008 and 2009. The dataset includes variables such as professor rank, discipline, years since obtaining a PhD, years of service, gender, and salary. The primary goal is to implement a regularized linear model to predict professor salaries based on these variables. Through thorough data exploration and statistical analysis, insights will be gained into the factors influencing salary variations among university professors."
+              description="The objective of this project is to develop a classification model to determine the financial feasibility of Spanish professionals relocating to another country for work. With the aim of earning more than 50,000 euros in the destination country, the model will predict whether individuals would surpass this income threshold. By leveraging a specifically curated dataset, our goal is to provide a data-driven decision-making tool to assist professionals in evaluating the economic viability of international career opportunities."
               repoLink={salaries_prediction}
-              languages={<SiRstudio />}
+              languages={<FaPython />}
             />
           </Col>
 
